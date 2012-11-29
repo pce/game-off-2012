@@ -21,5 +21,4 @@ I used a selfwritten, stupid and simple [Pixmap Editor](http://pce.github.com/ht
 * gamejs - framework
 
 
-![](https://github.com/pce/game-off-2012/blob/master/screenshot.png)
-	
+![Screenshot](https://github.com/pce/game-off-2012/raw/master/screenshot.png)
