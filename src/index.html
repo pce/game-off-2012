@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>clonecatcher</title>
+    <meta charset='utf-8'>
+    <style type=text/css>
+        @import url('css/main.css');
+    </style>
+    <script src="./public/yabble.js"></script>
+    <script src="./public/gamejs.min.js"></script>
+    <script>
+        require.setModuleRoot('./javascript/');
+        require.run('main');
+    </script>
+</head>
+<body>
+	<div id="game">
+    <button class="btn-game" onclick="window.location.reload();">restart</button>
+	<div>
+        <div id="gjs-loader">
+         Loading...
+        </div>
+        <canvas id="gjs-canvas"></canvas>
+    </div>
+    </div>
+</body>
+</html>
