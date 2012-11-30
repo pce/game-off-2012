@@ -142,7 +142,7 @@ function main() {
                     gameState = IN_GAMEOVER;
                 }
                 if (player.sheepCount == sheepCount) {
-                    // soundmanager.play(4);
+                    soundmanager.play(4);
                     gameState = IN_FINAL;
                 }
                 update(msDuration);
@@ -192,7 +192,7 @@ function main() {
 };
 
 
-var sounds = ["start", "sheep", "hit", "last-hit", "sheep-1", "sheep-3"];
+var sounds = ["start", "sheep", "hit", "last-hit", "success"];
 var extAudio = ".wav"; // || ".ogg"
 for (var s in sounds) {
  	sounds[s] = 'data/' + sounds[s] + extAudio;

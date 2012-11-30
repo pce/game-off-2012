@@ -327,7 +327,7 @@ Player.prototype.addHit = function () {
 Player.prototype.addSheepHit = function () {
     this.score += 1;
     this.sheepCount += 1;
-    this.soundmanager.playRandom([1,4,5]);
+    this.soundmanager.play(1);
 };
 
 Player.prototype.update = function (msDuration) {
