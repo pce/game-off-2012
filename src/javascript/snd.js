@@ -9,3 +9,8 @@ var SoundManager = exports.SoundManager = function(sound) {
 SoundManager.prototype.play = function(index) {
 	this.sound[index].play();
 };
+
+SoundManager.prototype.playRandom = function(indexes) {
+	this.sound[indexes[Math.floor(Math.random()*indexes.length]].play();
+};
+
