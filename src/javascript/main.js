@@ -212,7 +212,8 @@ gamejs.preload([
 	,'images/skyline-800x350.png'
 	,'images/bird-1As.png'
   	,'images/bird-1s.png'
-	// ,'images/fork-1.png'
+	,'images/fork-1.png'
+	,'images/fork-2.png'
 ]);
 
 gamejs.ready(main);
