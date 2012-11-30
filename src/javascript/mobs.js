@@ -100,6 +100,108 @@ Bird.prototype.draw = function (display) {
     display.blit(this.image[this.currentFrame], rect.center);
 };
 
+// -------------------------------------------------------------------
+// TODO Bird,Fork extends Enemy
+
+var Fork = exports.Fork = function (pos, images, player, fps, hitPoints) {
+    Fork.superConstructor.apply(this, arguments);
+
+    this.fps = fps || 6;
+    this.frameDuration = 10000 / this.fps;
+    this.currentFrameDuration = 0;
+
+    this.currentFrame = 0;
+    this.framesum = 2;
+    this.frames = 2;
+    this.origImage = [];
+    this.image = [];
+    var imgSize = 0;
+    for (var i = 0; i < this.framesum; i++) {
+        if (typeof images[i] == 'undefined') continue;
+        this.origImage[i] = images[i];
+        if (!imgSize) imgSize = this.origImage[i].getSize();
+        this.image[i] = new gamejs.Surface(imgSize);
+        this.image[i].blit(this.origImage[i]);
+    }
+    this.rect = new gamejs.Rect(pos, imgSize);
+    this.mask = mask.fromSurface(this.image[0]);
+
+    this.player = player;
+    this.isHighlighted = false;
+    this.highlightDuration = 0;
+    this.isHit = false;
+    this.hitCount = 0;
+    this.hitDuration = 0;
+    this.speed = 80;
+    this.levelspeed = {
+        0: 0,
+        1: 0,
+        2: 0,
+        3: 0,
+        4: 0
+    };
+    this.hitPoints = hitPoints || 0;
+    this.screen = gamejs.display.getSurface();
+    return this;
+};
+objects.extend(Fork, gamejs.sprite.Sprite);
+
+Fork.prototype.update = function (msDuration) {
+
+    if (this.isHit) {
+        return;
+    }
+
+    // Simple Animation - better this.startframe[sequence], this.endframe[sequence]
+    this.currentFrameDuration += msDuration;
+    if (this.currentFrameDuration >= this.frameDuration) {
+        if (this.currentFrame < this.frames - 1) {
+            this.currentFrame++;
+        } else {
+            this.currentFrame = 0;
+        }
+        this.currentFrameDuration = 0;
+    }
+
+    if (this.player.level > 2) {
+        if (!this.levelspeed[this.player.level]) {
+            this.levelspeed[this.player.level] = this.speed;
+        }
+        (this.speed < this.levelspeed[this.player.level] + 50) && this.speed++;
+    } else if (this.player.level > 1) {
+        if (!this.levelspeed[this.player.level]) {
+            this.levelspeed[this.player.level] = this.speed;
+        }
+        (this.speed < this.levelspeed[this.player.level] + 100) && this.speed++;
+    }
+
+    //  if (this.hitCount > this.hitPoints) {
+
+    // if isRunning move in place
+    this.rect.moveIp(this.speed * (msDuration / 1000), 0);
+
+    if (this.rect.right > this.screen.getSize()[0]) {
+        this.rect.moveIp(-(this.screen.getSize()[0] - 10), 0);
+    }
+
+    if (this.rect.collideRect(this.player.rect)) {
+        this.isHit = true;
+        this.player.addHit();
+    }
+    return;
+};
+
+Fork.prototype.draw = function (display) {
+    if (this.isHit) {
+        // reset();
+        return;
+    }
+    var rect = this.rect.clone();
+    display.blit(this.image[this.currentFrame], rect.center);
+};
+
+
+// -------------------------------------------------------------------
 
 
 var Sheep = exports.Sheep = function (pos, image, player, startAtLevel, hitPoints) {

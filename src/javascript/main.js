@@ -49,8 +49,15 @@ function main() {
             'skyline': gamejs.image.load('images/skyline-800x350.png')
     };
     var birdImages = [
-    gamejs.image.load('images/bird-1As.png'),
-    gamejs.image.load('images/bird-1s.png')];
+    	gamejs.image.load('images/bird-1As.png'),
+    	gamejs.image.load('images/bird-1s.png')
+    ];
+
+    var forkImages = [
+    	gamejs.image.load('images/fork-1.png'),
+    	gamejs.image.load('images/fork-2.png')
+    ];
+
     var sleepyImages = [
     gamejs.image.load('images/sleepy-1-s.png'),
     gamejs.image.load('images/sleepy-2-reading.png'),
@@ -87,6 +94,12 @@ function main() {
     birds.add(new mobs.Bird([rnd(-155, -192), rnd(68, 98)], birdImages, player, FPS));
     birds.add(new mobs.Bird([rnd(-255, -292), rnd(68, 98)], birdImages, player, FPS));
 
+    var forks = new gamejs.sprite.Group();
+    forks.add(new mobs.Fork([rnd(-125, -182), rnd(68, 98)], forkImages, player, FPS));
+    forks.add(new mobs.Fork([rnd(-192, -262), rnd(104, 168)], forkImages, player, FPS));
+    forks.add(new mobs.Fork([rnd(-232, -362), rnd(104, 168)], forkImages, player, FPS));
+
+
     display.fill("#ffffff");
 
     function update(msDuration) {
@@ -94,6 +107,7 @@ function main() {
         player.update(msDuration);
         sheeps.update(msDuration);
         birds.update(msDuration);
+        forks.update(msDuration);
         hud.update(msDuration);
     }
 
@@ -103,6 +117,7 @@ function main() {
         hud.draw(display);
         sheeps.draw(display);
         birds.draw(display);
+        forks.draw(display);
         player.draw(display);
     }
 
@@ -145,7 +160,7 @@ function main() {
                 blitStr = 'game over';
                 display.blit(hlfont.render(blitStr), [SCREEN_WIDTH - (SCREEN_WIDTH / 2) - blitStr.length * 7, SCREEN_HEIGHT - (SCREEN_HEIGHT / 2) - 20]);
                 // blitStr = 'press restart and watch out for the birds, branches and forks';
-                blitStr = 'press restart and watch out for the birds';
+                blitStr = 'press restart and watch out for the birds and forks';
                 display.blit(font.render(blitStr), [SCREEN_WIDTH - (SCREEN_WIDTH / 2) - blitStr.length * 3, SCREEN_HEIGHT - (SCREEN_HEIGHT / 2)]);
                 break;
             case IN_FINAL:
