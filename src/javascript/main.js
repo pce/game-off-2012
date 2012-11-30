@@ -177,7 +177,7 @@ function main() {
 };
 
 
-var sounds = ["start", "sheep", "hit", "last-hit"];
+var sounds = ["start", "sheep", "hit", "last-hit", "sheep-1", "sheep-3"];
 var extAudio = ".wav"; // || ".ogg"
 for (var s in sounds) {
  	sounds[s] = 'data/' + sounds[s] + extAudio;
