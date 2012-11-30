@@ -101,9 +101,13 @@ body {
 }
 
 #gjs-loader {
-    width: 50%;
-    height: 50%;
-    background: url('../public/ajax-loader.gif');
+	position: absolute;
+    top: 20%;
+	left: 15%; 
+	background: url("../public/ajax-loader.gif") no-repeat scroll 0 0 transparent;
+	height: 50%;
+	padding-left: 3%;
+	width: 50%;
 }
 
 #gjs-canvas {
