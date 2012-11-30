@@ -11,6 +11,6 @@ SoundManager.prototype.play = function(index) {
 };
 
 SoundManager.prototype.playRandom = function(indexes) {
-	this.sound[indexes[Math.floor(Math.random()*indexes.length]].play();
+	this.sound[indexes[Math.floor(Math.random()*indexes.length)]].play();
 };
 
