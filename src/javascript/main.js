@@ -33,7 +33,7 @@ function getExtAudio() {
 
 function main() {
 
-    var gameState = 0;
+    var gameState = -1;
     // touch.init();
     document.body.style.webkitUserSelect = 'none';
     document.body.oncontextmenu = function () {
@@ -189,6 +189,10 @@ function main() {
                 // draw
                 display.clear();
                 bg.draw(display);
+                if (gameState == -1) {
+                	soundmanager.play(5);
+                	gameState = IN_INTRO;
+                }
                 blitStr = 'clonecatcher';
                 display.blit(hlfont.render(blitStr), [SCREEN_WIDTH - (SCREEN_WIDTH / 2) - blitStr.length * 7, SCREEN_HEIGHT - (SCREEN_HEIGHT / 2) - 40]);
                 blitStr = 'CLICK TO PLAY';
@@ -200,7 +204,7 @@ function main() {
 };
 
 
-var sounds = ["start", "sheep", "hit", "last-hit", "success"];
+var sounds = ["start", "sheep", "hit", "last-hit", "success", "intro"];
 
 
 var extAudio = getExtAudio();

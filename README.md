@@ -10,9 +10,9 @@ I had the entire month of November to create a **web-based** game *loosely* buil
 
 ## Mission
 
-![Screenshot](https://github.com/pce/game-off-2012/raw/master/images/player-2-xl.png)
-
 You have to catch sheep clones to get `huddy` fall into a deep sleep.
+
+![player](https://github.com/pce/game-off-2012/raw/master/src/images/player-2-xl.png)
 
 
 ## About
