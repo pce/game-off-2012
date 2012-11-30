@@ -95,9 +95,9 @@ function main() {
     birds.add(new mobs.Bird([rnd(-255, -292), rnd(68, 98)], birdImages, player, FPS));
 
     var forks = new gamejs.sprite.Group();
-    forks.add(new mobs.Fork([rnd(-125, -182), rnd(68, 98)], forkImages, player, FPS));
-    forks.add(new mobs.Fork([rnd(-192, -262), rnd(104, 168)], forkImages, player, FPS));
-    forks.add(new mobs.Fork([rnd(-232, -362), rnd(104, 168)], forkImages, player, FPS));
+    forks.add(new mobs.Fork([rnd(-425, -482), rnd(68, 98)], forkImages, player, FPS));
+    forks.add(new mobs.Fork([rnd(-492, -562), rnd(104, 168)], forkImages, player, FPS));
+    forks.add(new mobs.Fork([rnd(-665, -632), rnd(104, 168)], forkImages, player, FPS));
 
 
     display.fill("#ffffff");
